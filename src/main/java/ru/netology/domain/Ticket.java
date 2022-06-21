@@ -1,5 +1,7 @@
 package ru.netology.domain;
 
+import java.util.Objects;
+
 public class Ticket implements Comparable<Ticket> {
     private int id;
     private int price;
@@ -29,6 +31,10 @@ public class Ticket implements Comparable<Ticket> {
         return arrival;
     }
 
+
+    public int getDuration() {
+        return duration;
+    }
 
     @Override
     public int compareTo(Ticket otherTicket) {
