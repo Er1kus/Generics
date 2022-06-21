@@ -2,7 +2,7 @@ package ru.netology.manager;
 
 import ru.netology.domain.Ticket;
 import ru.netology.repositiry.TicketRepository;
-import ru.netology.domain.TicketComparator;
+
 
 import lombok.AllArgsConstructor;
 
