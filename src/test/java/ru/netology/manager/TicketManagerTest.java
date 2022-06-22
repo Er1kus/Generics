@@ -5,6 +5,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ru.netology.domain.Ticket;
 import ru.netology.repositiry.TicketRepository;
+import ru.netology.domain.TicketComparator;
+
+import java.util.Comparator;
 
 
 public class TicketManagerTest {
@@ -13,15 +16,17 @@ public class TicketManagerTest {
 
     Ticket first = new Ticket(12, 12_999, "BAX", "KRR", 240);
     Ticket second = new Ticket(540, 19_999, "AER", "YKS", 600);
-    Ticket third = new Ticket(5, 2_999, "LED", "DME", 90);
+    Ticket third = new Ticket(5, 2_999, "LED", "DME", 70);
     Ticket forth = new Ticket(774, 7_499, "OVB", "VVO", 300);
     Ticket fifth = new Ticket(29, 14_399, "KGD", "KHV", 450);
     Ticket sixth = new Ticket(65, 4_999, "LED", "ROV", 180);
-    Ticket seventh = new Ticket(39, 2_499, "LED", "DME", 90);
+    Ticket seventh = new Ticket(39, 2_499, "LED", "DME", 110);
     Ticket eighth = new Ticket(71, 6_300, "LED", "KRR", 150);
     Ticket ninth = new Ticket(44, 6_199, "VKO", "TJM", 210);
     Ticket tenth = new Ticket(88, 3_199, "LED", "DME", 100);
     Ticket eleventh = new Ticket(57, 2_499, "LED", "DME", 90);
+    Ticket twelve = new Ticket(117, 4_599, "LED", "DME", 160);
+    Ticket thirteenth = new Ticket(21, 7_599, "LED", "DME", 50);
 
     @BeforeEach
     void setData() {
@@ -92,4 +97,16 @@ public class TicketManagerTest {
 
         Assertions.assertArrayEquals(expected, actual);
     }
+
+    @Test
+    public void shouldShowAndSortByCitiesAndTime() {
+        manager.add(twelve);
+        manager.add(thirteenth);
+
+        Ticket[] actual = manager.findAndSort("LED", "DME", Comparator.comparing(Ticket::getDuration));
+        Ticket[] expected = {thirteenth, third, eleventh, tenth, seventh, twelve};
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
 }
