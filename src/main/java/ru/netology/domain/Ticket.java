@@ -56,4 +56,17 @@ public class Ticket implements Comparable<Ticket> {
         }
         return false;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Ticket ticket = (Ticket) o;
+        return id == ticket.id && price == ticket.price && duration == ticket.duration && Objects.equals(departure, ticket.departure) && Objects.equals(arrival, ticket.arrival);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, price, departure, arrival, duration);
+    }
 }

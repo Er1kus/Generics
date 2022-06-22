@@ -33,7 +33,7 @@ public class TicketManager {
     public Ticket[] findAll(String from, String to) {
         Ticket[] ans = new Ticket[0];
         for (Ticket ticket : repository.findAll()) {
-            if (ticket.getDeparture() == from && ticket.getArrival() == to) {
+            if (ticket.getDeparture().equals(from) && ticket.getArrival().equals(to)) {
                 Ticket[] tmp = new Ticket[ans.length + 1];
                 System.arraycopy(ans, 0, tmp, 0, ans.length);
                 tmp[tmp.length - 1] = ticket;
